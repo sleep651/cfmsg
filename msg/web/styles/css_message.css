@@ -1,0 +1,407 @@
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	text-align:center;
+}
+
+body,td,th {
+	font-family: 宋体;
+	font-size: 12px;
+	color: #333333;
+}
+.font_99{
+    font-family:"宋体";
+	font-size:12px;
+	color:#999999;
+}
+
+
+
+/*top�˵���ʽ*/
+.a_menu:link {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 42px;
+	color: #fdd546;
+	text-decoration: none;
+	height: 42px;
+	width: 71px;
+	text-align: center;
+}
+
+.a_menu:visited {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 42px;
+	color: #fdd546;
+	text-decoration: none;
+	height: 42px;
+	width: 71px;
+	text-align: center;
+}
+.a_menu:hover {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 42px;
+	font-weight: bold;
+	color: 095148;
+	text-decoration: none;
+	background-image: url(../images/menu_a.png);
+	text-align: center;
+	height: 42px;
+	width: 71px;
+}
+.a_menu:active {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 42px;
+	font-weight: bold;
+	color: 095148;
+	text-decoration: none;
+	background-image: url(../images/menu_a.png);
+	text-align: center;
+	height: 42px;
+	width: 71px;
+}
+.a_menu-rj:link {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 42px;
+	color: #fdd546;
+	text-decoration: none;
+	height: 42px;
+	width: 71px;
+	text-align: center;
+}
+.a_menu-rj:visited {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 42px;
+	color: #fdd546;
+	text-decoration: none;
+	height: 42px;
+	width: 71px;
+	text-align: center;
+}
+.a_menu-rj:hover {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 42px;
+	font-weight: bold;
+	color: 095148;
+	text-decoration: none;
+	background-image: url(../images/menu_a2.png);
+	text-align: center;
+	height: 42px;
+	width: 71px;
+}
+.a_menu-rj:active {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 42px;
+	font-weight: bold;
+	color: 095148;
+	text-decoration: none;
+	background-image: url(../images/menu_a.png);
+	text-align: center;
+	height: 42px;
+	width: 71px;
+}
+.a_menu2:link {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 24px;
+	color: #095048;
+	text-decoration: none;
+	text-align: left;
+	height: 24px;
+}
+
+.a_menu2:visited {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 24px;
+	color: #095048;
+	text-decoration: none;
+	text-align: left;
+	height: 24px;
+}
+.a_menu2:hover {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 24px;
+	color: #ee960d;
+	text-decoration: none;
+	text-align: left;
+	height: 24px;
+	font-weight: bold;
+}
+.a_menu2:active {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 24px;
+	color: #ee960d;
+	text-decoration: none;
+	text-align: left;
+	height: 24px;
+	font-weight: bold;
+}
+
+.td_menu2_bj {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 24px;
+	color: #095048;
+	text-decoration: none;
+	background-color: #d6f0ef;
+	text-align: left;
+	text-indent: 3px;
+	height: 24px;
+}
+
+
+/*宋体�л���ʽ----------------------------------------------------------*/
+.bg_tab{
+    width:100%;
+	height:30px;
+	background-image:url(../images/bg_tab_03.gif);
+	text-align:left;
+}
+.tab_01{
+    width:85px;
+	height:30px;
+	background-image:url(../images/bg_tab_01.gif);
+	text-align:center;
+	line-height:30px;
+	font-family:"宋体";
+	font-size:12px;
+	font-weight:bold;
+	color:#000000;
+	float:left;
+}
+.tab_02{
+    width:85px;
+	height:30px;
+	background-image:url(../images/bg_tab_02.gif);
+	text-align:center;
+	line-height:30px;
+	font-family:"宋体";
+	font-size:12px;
+	color:#000000;
+	float:left;
+}
+.tab_03{
+    width:85px;
+	height:30px;
+	text-align:center;
+	line-height:30px;
+	font-family:"宋体";
+	font-size:12px;
+	color:#000000;
+	float:left;
+}
+
+
+/*宋体�б���ʽ----------------------------------------------------------*/
+.bg_table{
+    background-color:#EFFAF8;
+	text-align:center;
+	vertical-align:top;
+	padding:5px;
+}
+.bg_tb{
+    border-bottom:1px #C2C2C2 solid;
+	border-left:1px #C2C2C2 solid;
+	border-right:1px #C2C2C2 solid;
+	background-color:#FFFFFF;
+	text-align:center;
+	vertical-align:top;
+	padding:5px;
+}
+.bg_title{
+	height:32px;
+	background-image:url(../images/bg_title.gif);
+	text-align:left;
+}
+
+
+
+
+/*�б���ʽ----------------------------------------------------------*/
+.tb1_title{
+    height:26px;
+	background-image:url(../images/tb1_title.gif);
+	text-indent:10px;
+	font-family:"宋体";
+	font-size:12px;
+	font-weight:bold;
+	color:#FFFFFF;
+	line-height:26px;
+}
+.a_xw:link {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 24px;
+	color: #333333;
+	text-decoration: none;
+	text-align: left;
+}
+.a_xw:visited {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 24px;
+	color: #333333;
+	text-decoration: none;
+	text-align: left;
+}
+.a_xw:hover {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 24px;
+	color: #F98413;
+	text-decoration: none;
+	text-align: left;
+}
+.a_xw:active {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 24px;
+	color: #333333;
+	text-decoration: none;
+	text-align: left;
+}
+
+.a_op:link {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 24px;
+	color:#19C4B3;
+	text-decoration:underline;
+	text-align: left;
+}
+.a_op:visited {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 24px;
+	color:#19C4B3;
+	text-decoration:underline;
+	text-align: left;
+}
+.a_op:hover {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 24px;
+	color:#F98413;
+	text-decoration:underline;
+	text-align: left;
+}
+.a_op:active {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 24px;
+	color:#F98413;
+	text-decoration:underline;
+	text-align: left;
+}
+
+
+
+.db_ym{
+    width:300px;
+	height:20px;
+	margin-top:5px;
+	text-align:right;
+	float:right;
+	line-height:20px;
+}
+
+.db_button{
+    width:480px;
+	height:30px;
+	text-align:left;
+	float:left;
+}
+
+.a_cx_ym:link {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height:20px;
+	color: #000000;
+	text-decoration: none;
+}
+
+.a_cx_ym:visited {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height:20px;
+	color: #000000;
+	text-decoration: none;
+}
+.a_cx_ym:hover {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height:20px;
+	color: #19C4B3;
+	text-decoration:underline;
+}
+.a_cx_ym:active {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height:20px;
+	color: #19C4B3;
+	text-decoration:underline;
+}
+
+
+
+
+
+
+
+
+/*��Ȩ��Ϣ��ʽ----------------------------------------------------------*/
+.td_CopyRight {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 37px;
+	color: #fdd546;
+	text-align: center;
+}
+
+
+.bg_search{
+    width:98%;
+	height:45px;
+	background-image:url(../images/bg_search.gif);
+	text-align:left;
+	font-family:"宋体";
+	font-size:12px;
+	color:#000000;
+	line-height:45px;
+}
+
+.input_date{
+    width:140px;
+	height:14px;
+}
+.tb_txl {
+	border-bottom: #9db9b5 1px solid; 
+	border-left: #9db9b5 1px solid; 
+	margin-top: 5px; 
+	margin-bottom: 5px; 
+	border-top: #9db9b5 1px solid; 
+	border-right: #9db9b5 1px solid
+}
+
+.msg_text {
+	text-align: center; 
+	line-height: 30px; 
+	font-family: "宋体"; 
+	color: #4a4a4a; 
+	font-size: 14px; 
+	font-weight: bold; 
+	padding-top: 20px
+}
+
