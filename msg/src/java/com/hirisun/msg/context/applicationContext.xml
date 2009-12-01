@@ -6,6 +6,10 @@
 	<!-- 
 		测试 applicationContext-config-test
 	-->
+	<!-- 
 	<import resource="applicationContext-config-test.xml" />
-
+	-->
+	
+	<import resource="applicationContext-config-test-orcl.xml" />
+	
 </beans>

@@ -264,5 +264,34 @@ public class MsgServiceTests {
 		System.out.println("@test_getUsersJson:end==================");
 		assertTrue(true);
 	}
+	
+	
+	//读取短消息详情
+	@Test
+	public void test_getDetailMsgs() throws Exception {
+		System.out.println("@test_getDetailMsgs:begin-------------");
+		String curUserID = "hpc";
+		String msgID = "40288aef252005c10125200680200001";
+		int page = 1;
+		int pagesize = 20;
+		
+		PageResult ret = msgService.getDetailMsgs(msgID, page, pagesize);
+		
+		if(ret!=null)
+		{
+			System.out.println("pager=\n"+ret.getPager().toString());
+			List list = ret.getList();
+			if(list != null)
+			{
+				for(int i=0; i<list.size(); i++)
+				{
+					ShortMessage msg = (ShortMessage)list.get(i);
+					System.out.println("msg["+i+"]="+msg.toString());
+				}
+			}
+		}
+		System.out.println("@test_getDetailMsgs:end==================");
+		assertTrue(ret!=null);
+	}
 
 }

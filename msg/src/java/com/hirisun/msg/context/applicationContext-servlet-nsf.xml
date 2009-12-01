@@ -18,5 +18,7 @@
 	<bean class="com.hirisun.msg.web.MsgController">
 		<property name="msgService" ref="msgService" />
 	</bean>
-
+	<bean class="com.hirisun.msg.web.AdminController">
+		<property name="msgService" ref="msgService" />
+	</bean>
 </beans>

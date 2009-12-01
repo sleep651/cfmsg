@@ -43,7 +43,13 @@ public interface ShortMessageDao extends BaseDao<ShortMessage> {
 	/**	
 	 *	 获得接收的短消息条数
 	 */
+	@Deprecated
 	public int getCountReceiveShort(String curUserID);
+	
+	/**	
+	 *	 获得接收的短消息条数
+	 */
+	public int getReceiveCount(String curUserID, Integer type, Boolean isRead);
 	
 	/**	
 	 *	 获得发送条数
@@ -59,4 +65,40 @@ public interface ShortMessageDao extends BaseDao<ShortMessage> {
 	 *	 根据条件查询收件箱信息
 	 */
 	public PageResult getShortMessageReceiveByCondition(String curUserID, Condition cond, int page, int pagesize);
+	
+	
+	/**	
+	 *	 获取当前回复消息应该填入的收件人
+	 */
+	public String getReplyReceiveuserid(String curUserID, String msgID);
+	
+	/**
+	*	序号	函数名（中文）	函数功能	输入参数	输出参数	备注
+	*	2	读取短消息详情	获取指定短消息对应的消息序列	messageID	短消息List	
+	*/
+	public PageResult getDetailMsgs(String msgID, int page, int pagesize);
+
+	/**	
+	 *	 根据条件查询发件箱信息
+	 */
+	public PageResult getSendMsgsByCondition(String curUserID, Integer type, Condition cond, int page, int pagesize);
+	/**	
+	 *	 根据条件查询sys发件箱信息
+	 *	 type:消息类型,null（全部）
+	 */
+	public PageResult getSendSysMsgsByCondition(String curUserID, Condition cond, int page, int pagesize);
+	
+	/**	
+	 *	 根据条件查询收件箱信息
+	 */
+	public PageResult getReceiveMsgsByCondition(String curUserID, Integer type, Condition cond, int page, int pagesize);
+	/**	
+	 *	 根据条件查询sys收件箱信息
+	 *	 type:消息类型,null（全部）
+	 */
+	public PageResult getReceiveSysMsgsByCondition(String curUserID, Condition cond, int page, int pagesize);
+	/**	
+	 *	 将msg设置为已读状态
+	 */	
+	public boolean setMsgReadState(String curUserID, String msgID);
 }

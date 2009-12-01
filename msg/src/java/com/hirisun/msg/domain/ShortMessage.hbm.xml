@@ -14,7 +14,7 @@
             <column name="senduserid" length="32" not-null="true" />
         </property>
         <property name="showsenduserid" type="java.lang.String">
-            <column name="showsenduserid" length="32" not-null="true" />
+            <column name="showsenduserid" length="32" />
         </property>
         <property name="receiveuserid" type="java.lang.String">
             <column name="receiveuserid" length="2048" not-null="true" />
@@ -26,13 +26,16 @@
             <column name="content" length="2048" not-null="true" />
         </property>
         <property name="parentid" type="java.lang.String">
-            <column name="parentid" length="32" />
+            <column name="parentid" length="32"/>
         </property>
         <property name="type" type="java.lang.Integer">
             <column name="type" not-null="true" />
         </property>
         <property name="reply" type="java.lang.Boolean">
-            <column name="reply" not-null="true" />
+            <column name="reply" default="0" />
         </property>
+        <property name="isread" type="java.lang.Boolean">
+            <column name="isread" default="0"/>
+        </property>        
     </class>
 </hibernate-mapping>

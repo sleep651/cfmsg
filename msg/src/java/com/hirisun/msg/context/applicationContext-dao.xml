@@ -18,6 +18,9 @@
 		parent="baseDao" />
 		
 	<bean id="shortMessageDao" class="com.hirisun.msg.dao.impl.ShortMessageDaoImpl"
+		parent="baseDao" />	
+				
+	<bean id="userMsgDao" class="com.hirisun.msg.dao.impl.UserMsgDaoImpl"
 		parent="baseDao" />			
 	<!-- 
 	<bean id="testOrmDao" class="nak.nsf.dao.impl.TestOrmDaoImpl"
