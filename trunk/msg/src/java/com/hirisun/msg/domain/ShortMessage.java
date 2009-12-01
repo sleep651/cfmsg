@@ -22,7 +22,8 @@ public class ShortMessage  implements java.io.Serializable {
      private String parentid;	//null：表示新发的信息；不为null：表示回复的帖子
      private Integer type;		//10：短消息；20：系统消息（全体）21：系统消息（只发给选中的人）
      private Boolean reply;		// true：可回复false：不能回复短消息默认为可回复，系统消息默认为不可恢复，但都可以设置
-
+     private Boolean isread;	//是否已读
+     
      final static public int MSG_TYPE_SHORT = 10;
      final static public int MSG_TYPE_SYS_ALL = 20;
      final static public int MSG_TYPE_SYS_ALONE = 21;
@@ -120,7 +121,16 @@ public class ShortMessage  implements java.io.Serializable {
     public void setReply(Boolean reply) {
         this.reply = reply;
     }
-   
+
+	public Boolean getIsread() {
+		return isread;
+	}
+
+
+	public void setIsread(Boolean isread) {
+		this.isread = isread;
+	}
+	
 	@Override
 	public String toString() {
 		return ReflectionToStringBuilder.toString(this);

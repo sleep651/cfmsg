@@ -39,7 +39,7 @@ public class UserDaoImpl extends BaseDaoSupport<User> implements UserDao {
 			for(int i=0; i<list.size(); i++)
 			{
 				User user = (User) list.get(i);
-				jsonStr += user.getUserid();
+				jsonStr += "'"+user.getUserid()+"'";
 				jsonStr += ",";
 			}
 			

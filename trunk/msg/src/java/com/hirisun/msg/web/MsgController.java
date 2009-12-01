@@ -29,36 +29,16 @@ public class MsgController {
 		this.msgService = msgService;
 	}
 	
-	@RequestMapping("/page/index")
-	public String showPageIndex(){
-		return "page/index";
-	}
 	
-	@RequestMapping("/page/send")
-	public String showPageSend(){
-		return "page/send";
-	}
-	
-	@RequestMapping("/page/sendsys")
-	public String showPageSendsys(){
-		return "page/sendsys";
-	}
-	
-	@RequestMapping("/page/inbox")
-	public String showPageInbox(){
-		return "/page/inbox";
-	}
-	
-	
-	@RequestMapping("/smsbox/index")
+	@RequestMapping("/index")
 	public void showSmsstat(String curUserID){
 	}
 	
-	@RequestMapping("/smsbox/sendsms")
+	@RequestMapping("/sendsms")
 	public void showSendsms(String curUserID){
 	}
 	
-	@RequestMapping("/smsbox/senddo")
+	@RequestMapping("/senddo")
 	public String showSenddo(ShortMessage sendForm,String curUserID){
 		if(sendForm!=null)
 		{
@@ -66,17 +46,17 @@ public class MsgController {
 		}
 		msgService.sendMsg(sendForm);
 		logger.info("sendForm="+sendForm);
-		return "/smsbox/sendresult";
+		return "/sendresult";
 	}
 	
-	@RequestMapping("/smsbox/sendresult")
+	@RequestMapping("/sendresult")
 	public void showSendresult(String curUserID){
 	}
 	
-	@RequestMapping("/smsbox/main")
-	public void showtTabSendbox(HttpServletRequest request,Model model,String curUserID,String page,String pagesize,String msgType){
-		int pageInt = 0;
-		int pagesizeInt = 0;
+	@RequestMapping("/listshort")
+	public void showtListShort(HttpServletRequest request,Model model,String curUserID,String page,String pagesize,String msgType){
+		int pageInt = 1;
+		int pagesizeInt = 10;
 		
 		try {
 			pageInt = Integer.parseInt(page);
@@ -92,35 +72,138 @@ public class MsgController {
 		
 		PageResult pageResult;
 		
-		if(msgType.equals("sendbox"))
+		if("sendbox".equals(msgType))
 		{
-			pageResult = msgService.getShortMessagesSendByCondition(curUserID, cond, pageInt, pagesizeInt);
+			pageResult = msgService.getSendMsgsByCondition(curUserID, ShortMessage.MSG_TYPE_SHORT, cond, pageInt, pagesizeInt);
 		}
 		else
 		{
-			pageResult = msgService.getShortMessageReceiveByCondition(curUserID, cond, pageInt, pagesizeInt);
+			pageResult = msgService.getReceiveMsgsByCondition(curUserID, ShortMessage.MSG_TYPE_SHORT, cond, pageInt, pagesizeInt);
 		}
 		
 		model.addAttribute("pageResult",pageResult );
 	}
 	
-	@RequestMapping("/smsbox/smsstat_getjson")
+
+	@RequestMapping("/listsys")
+	public void showListSys(HttpServletRequest request,Model model,String curUserID,String page,String pagesize){
+		int pageInt = 1;
+		int pagesizeInt = 10;
+		
+		try {
+			pageInt = Integer.parseInt(page);
+			pagesizeInt = Integer.parseInt(pagesize);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+		
+		Condition cond = new Condition();
+		cond.setStartDate(request.getParameter("startTime"));
+		cond.setEndDate(request.getParameter("endTime"));
+		cond.setKey(request.getParameter("key"));
+		
+		PageResult pageResult = msgService.getReceiveSysMsgsByCondition(curUserID, cond, pageInt, pagesizeInt);
+		
+		model.addAttribute("pageResult",pageResult );
+	}
+	
+	@RequestMapping("/detailshort")
+	public void showDetailShort(HttpServletRequest request,Model model,String curUserID,String page,String pagesize,String msgID){
+		int pageInt = 1;
+		int pagesizeInt = 10;
+
+		try {
+			pageInt = Integer.parseInt(page);
+			pagesizeInt = Integer.parseInt(pagesize);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+		
+		//获得当前msg的parentid，如果当前msg的parentid不会空，则回复短信的parentid继承这个parentid
+		//否则，以当前msg的id作为回复短信的parentid
+		logger.info("msgID="+msgID);
+		msgService.setMsgReadState(curUserID, msgID);
+		
+		String parentid = msgService.getMsgParentidByID(msgID);
+		
+		if(parentid==null || parentid.equals(""))
+		{
+			parentid = msgID;
+		}
+		
+		PageResult pageResult = msgService.getDetailMsgs(parentid, pageInt, pagesizeInt);
+		String receiveuserid = msgService.getReplyReceiveuserid(curUserID, parentid);
+	
+		model.addAttribute("pageResult",pageResult );
+		model.addAttribute("receiveuserid",receiveuserid );
+		model.addAttribute("parentid",parentid );
+	}
+	
+
+	@RequestMapping("/detailsys")
+	public void showDetailSys(HttpServletRequest request,Model model,String curUserID,String page,String pagesize,String msgID){
+		int pageInt = 1;
+		int pagesizeInt = 10;
+
+		try {
+			pageInt = Integer.parseInt(page);
+			pagesizeInt = Integer.parseInt(pagesize);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+		
+		//获得当前msg的parentid，如果当前msg的parentid不会空，则回复短信的parentid继承这个parentid
+		//否则，以当前msg的id作为回复短信的parentid
+		logger.info("msgID="+msgID);
+		msgService.setMsgReadState(curUserID, msgID);
+		
+		String parentid = msgService.getMsgParentidByID(msgID);
+		
+		if(parentid==null || parentid.equals(""))
+		{
+			parentid = msgID;
+		}
+		
+		PageResult pageResult = msgService.getDetailMsgs(parentid, pageInt, pagesizeInt);
+		String receiveuserid = msgService.getReplyReceiveuserid(curUserID, parentid);
+	
+		model.addAttribute("pageResult",pageResult );
+		model.addAttribute("receiveuserid",receiveuserid );
+		model.addAttribute("parentid",parentid );
+	}
+	
+	
+	@RequestMapping("/smsstat_getjson")
 	public String showSmsstatGetjson(HttpServletRequest request, HttpServletResponse response, String username){
 		//扩展Spring MVC 用以支持Controller对Ajax的处理
 		String ret_json = "";
 		try{
-				String all_sendCount = ""+msgService.getCountSend(username);
-				String alone_sendSys = ""+msgService.getCountReceiveSys(username);
-				String alone_sendShort = ""+msgService.getCountReceiveShort(username);
-				
-				String all_receiveCount = ""+msgService.getCountSend(username);
-				
-				ret_json += "{"
-					+"all_sendCount:"+all_sendCount+","
-					+"alone_sendSys:"+alone_sendSys+","
-					+"alone_sendShort:"+alone_sendShort+","
-					+"all_receiveCount:"+all_receiveCount
-					+"}";
+				if(username!=null && !username.equals(""))
+				{
+					int new_allMsgCount = msgService.getReceiveCount(username, null, false);
+					int new_shortMsgCout = msgService.getReceiveCount(username, ShortMessage.MSG_TYPE_SHORT, false);
+					int new_sysMsgCount = new_allMsgCount-new_shortMsgCout;
+					
+					int total_allMsgCout = msgService.getReceiveCount(username, null, null);
+					int total_shortMsgCout = msgService.getReceiveCount(username, ShortMessage.MSG_TYPE_SHORT, null);
+					int total_sytMsgCount = total_allMsgCout - total_shortMsgCout;
+					
+					logger.info("new_allMsgCount="+new_allMsgCount);
+					logger.info("new_shortMsgCout="+new_shortMsgCout);
+					logger.info("new_sysMsgCount="+new_sysMsgCount);
+					logger.info("total_allMsgCout="+total_allMsgCout);
+					logger.info("total_shortMsgCout="+total_shortMsgCout);
+					logger.info("total_sytMsgCount="+total_sytMsgCount);
+					
+					ret_json += "{"
+						+"new_shortMsgCout:"+new_shortMsgCout+","
+						+"new_sysMsgCount:"+new_sysMsgCount
+						+"}";
+				}
+				else
+				{
+					ret_json = null;
+				}
 		
 		}catch(Exception e)
 		{
@@ -142,6 +225,53 @@ public class MsgController {
   
         return null;   
 	}
+	
+	@RequestMapping("/sendsms_getjson")
+	public String showSendsmsGetjson(HttpServletRequest request, HttpServletResponse response){
+		//扩展Spring MVC 用以支持Controller对Ajax的处理
+		String ret_json = "";
+		String preStr = "";
+		int max = 10;
+		
+		String q = request.getParameter("q");
+		String limit = request.getParameter("limit");
+		
+		if(q!=null)
+		{
+			preStr = q;
+		}
+		
+		if(limit!=null)
+		{
+			try {
+				max = Integer.parseInt(limit);
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		ret_json = msgService.getUsersJson(preStr, max);
+		
+		logger.info("ret_json="+ret_json);
+		
+        response.setContentType("text/Xml;charset=utf-8");   
+        PrintWriter out = null;   
+        try {   
+            out = response.getWriter();   
+            out.println(ret_json);   
+        }   
+        catch (IOException ex1) {   
+            ex1.printStackTrace();   
+        }   
+        finally {   
+            out.close();   
+        }   
+  
+        return null;   
+	}
+	
+
 /*
 	@RequestMapping("/adddo")
 	public String addUser(@ModelAttribute User user){

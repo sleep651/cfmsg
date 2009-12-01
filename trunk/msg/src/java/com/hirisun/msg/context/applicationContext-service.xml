@@ -7,6 +7,7 @@
 		<property name="userDao" ref="userDao" />
 		<property name="adminDao" ref="adminDao" />
 		<property name="shortMessageDao" ref="shortMessageDao" />
+		<property name="userMsgDao" ref="userMsgDao" />
 	</bean>
 	
 	<!--

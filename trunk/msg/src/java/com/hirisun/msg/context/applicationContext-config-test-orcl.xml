@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+
+	<import resource="applicationContext-dao.xml" />
+	<import resource="applicationContext-dataSource.xml" />
+	<import resource="applicationContext-hibernate.xml" />
+	<import resource="applicationContext-service.xml" />
+	<import resource="applicationContext-aop.xml" />
+	<import resource="applicationContext-log4j-test.xml" />
+	
+<!-- 
+	<import resource="applicationContext-dao-jdbc.xml" />
+	<import resource="applicationContext-i18n.xml" />
+	<import resource="applicationContext-javamail.xml" />
+	<import resource="applicationContext-prototype.xml" />
+	<import resource="applicationContext-ldap.xml" />
+	<import resource="applicationContext-service.xml" />
+	<import resource="applicationContext-ehcache.xml" />
+	<import resource="applicationContext-rmi-exporter.xml" />
+	<import resource="applicationContext-rmi-consumer.xml" />
+ -->
+
+	<alias name="dataSourceC3P0Test" alias="dataSource" />
+	<alias name="sessionFactoryOracle10g" alias="sessionFactory" />
+	
+	<!--
+	<alias name="dataSourceMysqlTest" alias="dataSource" />
+	<alias name="sessionFactoryMySql" alias="sessionFactory" />
+	-->
+	
+ <!-- 
+	<alias name="nativeJdbcExtractorC3P0" alias="nativeJdbcExtractor" />
+	<alias name="lobHandlerOracle" alias="lobHandler" />
+	
+	<alias name="ldapContextSourceTest" alias="ldapContextSource"/>
+	<alias name="ldapConfigTest" alias="ldapConfig" />
+ -->
+</beans>
